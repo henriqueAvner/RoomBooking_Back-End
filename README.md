@@ -7,14 +7,14 @@ Desenvolva um sistema para reservas de quartos em um hotel. Os usuários devem s
 Modelagem de Dados (Sequelize):
 
 User: Representa os usuários do sistema (hóspedes).
+Campos: ID, Nome, E-mail, Senha (criptografada).<br>
 
-Campos: ID, Nome, E-mail, Senha (criptografada).
 Room: Representa os quartos disponíveis no hotel.
+Campos: ID, Número do Quarto, Tipo de Quarto, Preço por Noite.<br>
 
-Campos: ID, Número do Quarto, Tipo de Quarto, Preço por Noite.
 Reservation: Representa as reservas feitas pelos usuários.
+Campos: ID, ID do Usuário (Chave Estrangeira), ID do Quarto (Chave Estrangeira), Data de Check-in, Data de Check-out.<br>
 
-Campos: ID, ID do Usuário (Chave Estrangeira), ID do Quarto (Chave Estrangeira), Data de Check-in, Data de Check-out.
 Requisitos Funcionais:
 
 Autenticação de Usuários:
