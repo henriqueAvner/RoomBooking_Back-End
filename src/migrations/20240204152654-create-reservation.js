@@ -10,32 +10,19 @@ module.exports = {
         autoIncrement: true,
         type: Sequelize.INTEGER,
       },
-      userId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        field: 'user_id',
-        references: {
-          model: 'Users',
-          key: 'id',
-        }
-      },
-      roomId: {
-        type: Sequelize.INTEGER,
-        allowNull: false,
-        onDelete: 'CASCADE',
-        onUpdate: 'CASCADE',
-        field: 'room_id',
-        references: {
-          model: 'Rooms',
-          key: 'id',
-        }
-      },
       checkIn: {
         type: Sequelize.DATE,
         field: 'check_in',
         allowNull: false,
+      },
+      roomId: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        field: 'room_id',
+        references: {
+          model: 'Rooms',
+          key: 'id'
+        }
       },
       checkOut: {
         type: Sequelize.DATE,
@@ -43,7 +30,7 @@ module.exports = {
         allowNull: false,
       },
 
-    });
+    }, { timestamps: false });
   },
 
   async down(queryInterface, Sequelize) {
