@@ -2,18 +2,21 @@
   "name": "roombookingapp",
   "version": "1.0.0",
   "description": "This reposity will be used to do an application for a room booking in a hotel!! Projeto: Sistema de Reservas de Quartos de Hotel Descrição: Desenvolva um sistema para reservas de quartos em um hotel. Os usuários devem se cadastrar, autenticar, visualizar os quartos disponíveis, efetuar reservas e ver o histórico de suas reservas. Utilize o Sequelize para modelagem de dados e JWT para autenticação.",
-  "main": "index.js",
+  "main": "src/server.js",
   "scripts": {
+    "dev": "nodemon src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "express": "4.17.3",
     "mysql2": "3.0.0",
     "sequelize": "6.3.4"
   },
   "devDependencies": {
+    "nodemon": "2.0.15",
     "sequelize-cli": "6.6.1"
   }
 }
