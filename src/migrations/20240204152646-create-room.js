@@ -22,9 +22,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
       },
-
-
-    });
+    }, { timestamps: false });
   },
 
   async down(queryInterface, Sequelize) {
