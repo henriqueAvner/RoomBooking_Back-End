@@ -1,6 +1,6 @@
 const { userService } = require("../services")
 
-const findaAll = async (req, res) => {
+const findAll = async (req, res) => {
     try {
         const findAll = await userService.findAll();
         return res.status(200).json(findAll);
@@ -11,5 +11,5 @@ const findaAll = async (req, res) => {
 };
 
 module.exports = {
-    findaAll,
+    findAll,
 }
