@@ -6,7 +6,7 @@ const findAll = async (req, res) => {
         return res.status(200).json(findAll);
     } catch (error) {
         console.log(error.message);
-        res.status(500).json({ message: 'Ocorreu um erro' });
+        res.status(500).json({ message: 'No user was found' });
     }
 };
 

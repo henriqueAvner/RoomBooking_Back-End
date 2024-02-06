@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { userController, roomController} = require('./controllers');
+const { userController, roomController, reservationController, userReservController } = require('./controllers');
 
 const app = express();
 
@@ -10,6 +10,8 @@ app.get('/users', userController.findAll)
 
 app.get('/rooms', roomController.findAll)
 
-app.get('/reservations')
+app.get('/reservations', reservationController.findAll);
+
+app.get('/userReservation', userReservController.findAllUserReserv);
 
 module.exports = app;
