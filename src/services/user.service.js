@@ -5,6 +5,7 @@ const findAll = async () => {
     return allUsers;
 };
 
+
 module.exports = {
     findAll,
 }
