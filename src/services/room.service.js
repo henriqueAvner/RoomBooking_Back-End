@@ -1,4 +1,4 @@
-const { Room } = require('../models');
+const { Room, Reservation } = require('../models');
 const serviceResponse = require('../utils/messages');
 
 const findAll = async () => {
@@ -30,7 +30,7 @@ const createRoom = async (roomNumber, roomType, nightPrice) => {
 const updateRoom = async (id, roomNumber, roomType, nightPrice) => {
     const existRoom = await Room.findOne({ where: { id } });
     if (!existRoom) {
-        return { status: serviceResponse.NOT_FOUND, data: { message: "We don't this room, please type a true room value!" } };
+        return { status: serviceResponse.NOT_FOUND, data: { message: "We don't have this room, please type a true room value!" } };
     }
     if (!roomNumber || !roomType || !nightPrice) {
         return { status: serviceResponse.BAD_REQUEST, data: { message: 'Error, please type a completed room for update!' } };

@@ -9,6 +9,10 @@ const RoomModel = (sequelize, DataTypes) => {
         underscored: true,
         timestamps: false,
     });
+    Room.associate = (models) => {
+        Room.hasMany(models.Reservation,
+            { foreignKey: 'roomId', as: 'Reservations' })
+    }
     return Room;
 
 }

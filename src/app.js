@@ -19,6 +19,10 @@ app.put('/rooms/:id', roomController.updateRoom);
 app.delete('/rooms/:id', roomController.deleteRoom);
 
 app.get('/reservations', reservationController.findAll);
+app.get('/reservations/:id', reservationController.findReservById);
+app.post('/reservations', reservationController.newReserv);
+app.put('/reservations/:id', reservationController.updateReserv);
+app.delete('/reservations/:id', reservationController.deleteReserv);
 
 app.get('/userReservation', userReservController.findAllUserReserv);
 
