@@ -3,7 +3,7 @@ const { User } = require('../models');
 const serviceResponse = require('../utils/messages');
 
 const findAllUsers = async () => {
-    const allUsers = await User.findAll();
+    const allUsers = await User.findAll({ attributes: { exclude: ['password'] } });
     if (!allUsers) {
         return { status: serviceResponse.NOT_FOUND, data: { message: 'Users not found' } }
     }
@@ -11,7 +11,7 @@ const findAllUsers = async () => {
 };
 
 const findUserByPk = async (id) => {
-    const currUser = await User.findByPk(id);
+    const currUser = await User.findByPk(id, { attributes: { exclude: ['password'] } });
     if (!currUser) {
         return { status: serviceResponse.NOT_FOUND, data: { message: 'User not found' } }
     }

@@ -6,7 +6,7 @@ const findAllUsers = async (_req, res) => {
         const { status, data } = await userService.findAllUsers();
         return res.status(statusHttp(status)).json(data);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: `Error: ${error.message}` });
     }
 };
 
@@ -16,7 +16,7 @@ const findUserByPk = async (req, res) => {
         const { status, data } = await userService.findUserByPk(id);
         return res.status(statusHttp(status)).json(data);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: `Error: ${error.message}` });
     }
 }
 
@@ -26,7 +26,7 @@ const createUser = async (req, res) => {
         const { status, data } = await userService.createUser(nome, email, password);
         return res.status(statusHttp(status)).json(data);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: `Error: ${error.message}` });
     }
 }
 
@@ -37,7 +37,7 @@ const updateUser = async (req, res) => {
         const { status, data } = await userService.updateUser(id, nome, email, password);
         return res.status(statusHttp(status)).json(data);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: `Error: ${error.message}` });
     }
 }
 
@@ -47,7 +47,7 @@ const deleteUser = async (req, res) => {
         const { status, data } = await userService.deleteUser(id);
         return res.status(statusHttp(status)).json(data);
     } catch (error) {
-        return res.status(500).json({ message: error.message });
+        return res.status(500).json({ message: `Error: ${error.message}` });
     }
 }
 
