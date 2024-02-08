@@ -3,8 +3,8 @@ const ReservationModel = (sequelize, DataTypes) => {
         id: { type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true },
         checkIn: DataTypes.DATE,
         roomId: { type: DataTypes.INTEGER, foreignKey: true },
-        checkOut:DataTypes.DATE,
-    },{
+        checkOut: DataTypes.DATE,
+    }, {
         tableName: 'Reservations',
         underscored: true,
         timestamps: false,
