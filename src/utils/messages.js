@@ -5,6 +5,7 @@ const serviceResponse = {
     UNAUTHORIZED: 'UNAUTHORIZED',
     BAD_REQUEST: 'BAD_REQUEST',
     NO_CONTENT: 'NO_CONTENT',
+    CONFLICT: 'CONFLICT',
 };
 
 
