@@ -1,6 +1,6 @@
 const express = require('express');
 
-const { userController, roomController, reservationController, userReservController } = require('./controllers');
+const { userController, roomController, reservationController, } = require('./controllers');
 
 const app = express();
 
@@ -24,6 +24,5 @@ app.post('/reservations', reservationController.newReserv);
 app.put('/reservations/:id', reservationController.updateReserv);
 app.delete('/reservations/:id', reservationController.deleteReserv);
 
-app.get('/userReservation', userReservController.findAllUserReserv);
 
 module.exports = app;

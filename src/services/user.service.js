@@ -1,4 +1,4 @@
-const { User } = require('../models');
+const { User, Reservation } = require('../models');
 
 const serviceResponse = require('../utils/messages');
 
