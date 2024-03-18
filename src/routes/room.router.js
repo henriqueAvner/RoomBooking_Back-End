@@ -5,10 +5,10 @@ const roomRouter = Router();
 
 
 roomRouter
-    .get('/rooms', roomController.findAll)
-    .get('/rooms/:id', roomController.findRoomPk)
-    .post('/rooms', roomController.createRoom)
-    .put('/rooms/:id', roomController.updateRoom)
-    .delete('/rooms/:id', roomController.deleteRoom)
+    .get('/rooms', validateToken, roomController.findAll)
+    .get('/rooms/:id', validateToken, roomController.findRoomPk)
+    .post('/rooms', validateToken, roomController.createRoom)
+    .put('/rooms/:id', validateToken, roomController.updateRoom)
+    .delete('/rooms/:id', validateToken, roomController.deleteRoom)
 
 module.exports = roomRouter;
