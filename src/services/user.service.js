@@ -1,4 +1,5 @@
-const { User } = require('../models');
+const { User, Reservation } = require('../models');
+const { generateToken } = require('../utils/JWT');
 
 const serviceResponse = require('../utils/messages');
 
@@ -52,6 +53,20 @@ const deleteUser = async (id) => {
     return { status: serviceResponse.NO_CONTENT, data: { message: 'User deleted' } }
 }
 
+const login = async (email, password) => {
+    const user = await User.findOne({ where: { email } });
+    if (!user) {
+        return { status: serviceResponse.UNAUTHORIZED, data: { message: 'Invalid email or password' } }
+    }
+    if (user.password !== password) {
+        return { status: serviceResponse.UNAUTHORIZED, data: { message: 'Invalid email or password' } }
+    }
+    const payload = {
+        id: user.id,
+    };
+    const token = generateToken(payload);
+    return { status: serviceResponse.SUCCESS, data: { token } }
+}
 
 module.exports = {
     findAllUsers,
@@ -59,4 +74,5 @@ module.exports = {
     createUser,
     updateUser,
     deleteUser,
+    login,
 }

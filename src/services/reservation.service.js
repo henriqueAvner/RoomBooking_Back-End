@@ -1,15 +1,15 @@
-const { Reservation, Room } = require('../models');
+const { Reservation, Room, User } = require('../models');
 const serviceResponse = require('../utils/messages');
 
 const findAll = async () => {
     const allReservations = await Reservation.findAll({
-        include: { model: Room, as: 'Rooms', attributes: { exclude: ['id'] } },
+        include: [{ model: Room, as: 'Rooms', attributes: { exclude: ['id'] } }, { model: User, as: 'Users', attributes: { exclude: ['password'] } }],
     });
     return { status: serviceResponse.SUCCESS, data: allReservations }
 }
 
 const findReservById = async (id) => {
-    const currReservation = await Reservation.findOne({ where: { id }, include: { model: Room, as: 'Rooms', attributes: { exclude: ['id'] } } });
+    const currReservation = await Reservation.findOne({ where: { id }, include: [{ model: Room, as: 'Rooms', attributes: { exclude: ['id'] } }, { model: User, as: 'Users', attributes: { exclude: ['password'] } }] });
     if (!currReservation) {
         return { status: serviceResponse.BAD_REQUEST, data: { message: "We don't have this reservation!" } };
     }
