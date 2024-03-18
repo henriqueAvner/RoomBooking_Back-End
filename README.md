@@ -20,7 +20,7 @@
     env $(cat .env) npm run dev
     ```
   
-  - :pushpin: Para rodar o projeto desta forma, obrigatoriamente você deve ter o `node` instalado em seu computador.
+  - :pushpin: Para rodar o projeto desta forma, obrigatoriamente você deve ter o `node.js` instalado em seu computador.
 
   <br/>
 
