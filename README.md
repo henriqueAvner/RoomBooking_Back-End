@@ -1,52 +1,111 @@
-# RoomBookingApp
-This reposity will be used to do an application for a room booking in a hotel!!
-Projeto: Sistema de Reservas de Quartos de Hotel
-Descrição:
-Desenvolva um sistema para reservas de quartos em um hotel. Os usuários devem se cadastrar, autenticar, visualizar os quartos disponíveis, efetuar reservas e ver o histórico de suas reservas. Utilize o Sequelize para modelagem de dados e JWT para autenticação.
+# RoomBookingAPI :office:
 
-Modelagem de Dados (Sequelize):
+## Descrição:
+  <summary><strong>O que foi desenvolvido:</strong></summary>
 
-User: Representa os usuários do sistema (hóspedes).<br>
-Campos: ID, Nome, E-mail, Senha (criptografada).<br>
 
-Room: Representa os quartos disponíveis no hotel.<br>
-Campos: ID, Número do Quarto, Tipo de Quarto, Preço por Noite.<br>
+1. Neste projeto foi desenvolvida uma API Restful e um banco de dados para reservas em um serviço de hotelaria;
 
-Reservation: Representa as reservas feitas pelos usuários.<br>
-Campos: ID, ID do Usuário (Chave Estrangeira), ID do Quarto (Chave Estrangeira), Data de Check-in, Data de Check-out.<br>
+2. As tecnologias utilizadas foram: `Node.js` usando o pacote `Sequelize` para a criação de um banco de dados em `MySQL`, além da utilização da ferramenta `JWT` para autorização de acesso em algumas rotas;
 
-Requisitos Funcionais:
+3. Foram desenvolvidos endpoints que estão conectados ao banco de dados seguindo os princípios do REST;
 
-Autenticação de Usuários:
+##  Como executar o projeto:
 
-Cadastro de usuários com informações básicas.
-Geração de token JWT para autenticação.
-Quartos Disponíveis:
+  > :pushpin: Instale as dependências [**Caso existam**] com `npm install`
+  
+  - Lembre-se de usar o prefixo `env $(cat .env)` ao rodar os comandos localmente para carregar as variáveis de ambiente do arquivo `.env`. Por exemplo:
+  
+    ```bash
+    env $(cat .env) npm run dev
+    ```
+  
+  - :pushpin: Para rodar o projeto desta forma, obrigatoriamente você deve ter o `node` instalado em seu computador.
 
-Listagem dos quartos disponíveis no hotel.
-Informações sobre o tipo de quarto e preço por noite.
-Reservas:
+  <br/>
 
-Usuários podem efetuar reservas de quartos, fornecendo as datas de check-in e check-out.
-Validar se o quarto escolhido está disponível para as datas desejadas.
-Histórico de reservas para cada usuário.
-Visualização de Reservas:
+  
 
-Os usuários devem poder visualizar suas reservas passadas e futuras.
-Exemplos de Endpoints (Express):
-Autenticação:
+  ## Instruções de utilização do projeto:
+  - ⚠️ TODAS AS ROTAS ABAIXO DA ROTA (`POST /user/register`) NECESSITAM DE UM TOKEN GERADO PELA ROTA (`POST /login`) PARA FUNCIONAR
 
-POST /api/auth/register: Cadastro de usuários.
-POST /api/auth/login: Login de usuários (geração de token JWT).
-Quartos:
+## FUNCIONALIDADES DOS ENDPOINTS
 
-GET /api/rooms: Listagem de quartos disponíveis.
-Reservas:
+| Rota                    | Link              | Funcionalidade                                               |
+|-------------------------|-------------------|---------------------------------------------------------------|
+| **CADASTRO DE USUÁRIOS**|                   |                                                               |
+| POST                    | /users/register   | Registra um novo usuário no hotel                            |
+| POST                    | /login            | Faz o login do usuário                                       |
+| **USUÁRIOS**            |                   |                                                               |
+| GET                     | /users            | Mostra todos os clientes cadastrados no hotel                |
+| GET                     | /users/:id        | Encontra um usuário do hotel através de seu id               |
+| PUT                     | /users/:id        | Atualiza dados de um usuário do hotel                        |
+| DELETE                  | /users/:id        | Deleta o cadastro de um usuário do hotel                     |
+| **QUARTOS**             |                   |                                                               |
+| GET                     | /rooms            | Mostra todos os quartos do hotel                             |
+| GET                     | /rooms/:id        | Encontra um quarto do hotel pelo seu id                      |
+| POST                    | /rooms            | Adiciona um quarto ao hotel                                  |
+| PUT                     | /rooms/:id        | Altera os dados de um quarto                                 |
+| DELETE                  | /rooms/:id        | Deleta um quarto do hotel                                    |
+| **RESERVAS**            |                   |                                                               |
+| GET                     | /reservations     | Mostra todas as reservas realizadas                          |
+| GET                     | /reservations/:id | Mostra as reservas realizadas pelo(s) usuário(s) a um quarto |
+| POST                    | /reservations     | Realiza uma nova reserva a um quarto                         |
+| PUT                     | /reservations/:id | Altera uma reserva realizada por um usuário                  |
+| DELETE                  | /reservations/:id | Deleta uma reserva realizada em um quarto pelo usuário       |
 
-POST /api/reservations: Efetuar uma reserva.
-GET /api/reservations: Visualizar histórico de reservas.
-Observações:
 
-Implemente middleware para verificar a autenticação em endpoints que exigem login.
-Use boas práticas para manipulação de datas, evitando reservas conflitantes.
-Considere a implementação de um sistema de pagamento simulado, se quiser adicionar mais complexidade.
+  ### Utilização:
+  :pushpin: Utilize algum aplicativo ou extensão do VSCode para realizar as requisições. 
+  </br>
+  > Exemplo: ThunderClient, Insomnia, entre outros.
+  ## Gerando seu token:
+ ### Ao fazer uma requisição para a rota POST /login, com email e password, será gerado um token para você. Exemplo:
+
+
+  ```json
+  {
+    "email": "henriqueAvner@gmail.com",
+    "password": "senhaPadraoParaToken"
+  }
+  ```
+ - Ao realizar um login correto (como o exemplo), na rota, um token será gerado:
+   
+    ```json
+    {
+      "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwYXlsb2FkIjp7ImlkIjo1LCJkaXNwbGF5TmFtZSI6InVzdWFyaW8gZGUgdGVzdGUiLCJlbWFpbCI6InRlc3RlQGVtYWlsLmNvbSIsImltYWdlIjoibnVsbCJ9LCJpYXQiOjE2MjAyNDQxODcsImV4cCI6MTYyMDY3NjE4N30.Roc4byj6mYakYqd9LTCozU1hd9k_Vw5IWKGL4hcCVG8"
+    }
+    ```
+    > :warning: O token acima é fictício, você deve utilizar seu próprio token gerado
+
+<br />
+
+  ## Utilizando o token:
+  Resgatando seu token, antes de fazer a requisição para qualquer rota, você deve utilizá-lo no header de sua requisição. Utilizaremos o Insomnia como exemlo:
+
+  1- Adicionando o token - Crie sua rota:
+  
+  <br />
+  
+  ![image](https://github.com/henriqueAvner/blogs_api/assets/133919307/a19b892c-a99c-472a-85f1-b5b64f54393c)
+
+  <br />
+  
+  2 - Mude para a aba Headers, e no primeiro espaço escreva **Authorization**:
+  
+  <br />
+  
+  ![image](https://github.com/henriqueAvner/blogs_api/assets/133919307/cb77168a-0e6d-40b0-8990-3b41fae7a227)
+  
+  <br />
+  
+  3 - No espaço a frente de Authorization, cole o **token** criado em seu login, porém antes, escreva o parâmetro **Bearer**:
+  
+  </br>
+  
+  ![image](https://github.com/henriqueAvner/blogs_api/assets/133919307/6997babf-c3ec-4c2d-96d9-950596dd3b6e)
+  
+  <br />
+  
+  ## :white_check_mark:Assim, você estará permitido a realizar as requisições para todos os endpoints!:white_check_mark:
+
